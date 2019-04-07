@@ -36,4 +36,13 @@ router.delete('/api/event/:id', (req, res) => {
   res.send( { id: req.params.id});
 });
 
+router.use((req, res, next) => {
+  if (req.isAuthenticated()) {
+    next();
+  } else {
+    res.status(401);
+    res.send('Unauthorized. Please refresh page to set new session.');
+  }
+});
+
 module.exports = router;

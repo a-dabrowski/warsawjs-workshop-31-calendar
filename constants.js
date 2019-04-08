@@ -4,7 +4,9 @@ const SESSION_OPTIONS = {
   resave: false,
   saveUninitialized: true,
 };
+const DB_HOST = process.env.DB_HOST;
 module.exports = {
   PORT,
-  SESSION_OPTIONS
+  SESSION_OPTIONS,
+  DB_HOST,
 };

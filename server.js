@@ -25,6 +25,15 @@ app.use(rootRouter);
 
 app.set('port', PORT);
 
+app.get('/', (req, res, next) => {
+  if (req.isAuthenticated()) {
+    next();
+  } else {
+    res.redirect('/auth/github');
+  }
+});
+
 app.listen(app.get('port'), () => {
   console.info( `express app running on port: ${app.get('port')}`);
 });
+//TODO use supertest npm package
